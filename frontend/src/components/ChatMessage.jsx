@@ -14,11 +14,11 @@ const ChatMessage = ({ message, isAi }) => {
       >
         {isAi ? (
           <div className="w-10 md:w-15 p-2">
-            <img src="./src/assets/captain.png" alt="" />
+            <img src="/captain.png" alt="" />
           </div>
         ) : (
           <div className="w-10 md:w-15 p-2">
-            <img src="./src/assets/star-medal.png" alt="" />
+            <img src="/star-medal.png" alt="" />
           </div>
         )}
       </div>
