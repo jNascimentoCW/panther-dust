@@ -35,6 +35,7 @@ npm run start
 ```
 
 ⚠️ Crie um arquivo .env na pasta backend com a seguinte estrutura:
+
 OPENAI_API_KEY=sua-chave-da-openai
 PORT=3000
 
