@@ -11,7 +11,9 @@ const app = express();
 // Middleware
 app.use(
   cors({
-    origin: "https://pantherdust-frontend.onrender.com",
+    origin: "https://panther-dust.onrender.com",
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type"],
   })
 );
 
