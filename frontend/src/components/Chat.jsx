@@ -75,7 +75,7 @@ const Chat = () => {
       <div className="flex-1 overflow-y-auto p-4 space-y-6 flex flex-col">
         {messages.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-full text-center text-gray-500 relative">
-            <div className="bg-[url(./bg-img.png)] bg-no-repeat bg-size-[30rem] bg-center opacity-50 w-full h-full absolute z-1"></div>
+            <div className="bg-[url(/bg-img.png)] bg-no-repeat bg-size-[30rem] bg-center opacity-50 w-full h-full absolute z-1"></div>
             <div className="text-stone-50 z-2">
               <p className="text-xl font-medium">Inicie uma conversa</p>
               <p className="mt-2">Faça uma pergunta!</p>
@@ -119,7 +119,7 @@ const Chat = () => {
                 className="absolute right-2 inline-flex items-center justify-center w-12 h-12 rounded-xl text-white bg-stone-600 hover:bg-stone-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-stone-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
               >
                 <i>
-                  <img className="p-2" src="./src/assets/gun.png" alt="" />{" "}
+                  <img className="p-2" src="/gun.png" alt="" />{" "}
                 </i>
                 {/* <PaperAirplaneIcon className="h-6 w-6 rotate-90" /> */}
               </button>
