@@ -28,9 +28,7 @@ const Chat = () => {
     setIsLoading(true);
 
     try {
-      const API_BASE_URL = import.meta.env.VITE_API_URL;
-
-      const response = await fetch(`${API_BASE_URL}/api/chat`, {
+      const response = await fetch("http://localhost:3000/api/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -92,9 +90,9 @@ const Chat = () => {
         )}
         {isLoading && (
           <div className="flex items-center justify-center space-x-2 p-4">
-            <div className="animate-bounce h-2 w-2 bg-stone-500 rounded-full"></div>
-            <div className="animate-bounce h-2 w-2 bg-stone-500 rounded-full delay-100"></div>
-            <div className="animate-bounce h-2 w-2 bg-stone-500 rounded-full delay-200"></div>
+            <div className="animate-bounce h-2 w-2 bg--500 rounded-full"></div>
+            <div className="animate-bounce h-2 w-2 bg--500 rounded-full delay-100"></div>
+            <div className="animate-bounce h-2 w-2 bg--500 rounded-full delay-200"></div>
           </div>
         )}
         <div ref={messagesEndRef} />
