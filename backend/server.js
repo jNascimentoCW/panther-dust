@@ -10,7 +10,10 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://panther-dust.onrender.com"],
+    origin: [
+      "http://localhost:5173",
+      "https://panther-dust-backend.onrender.com",
+    ],
     methods: ["POST"],
     allowedHeaders: ["Content-Type"],
   })
