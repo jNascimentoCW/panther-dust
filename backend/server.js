@@ -57,8 +57,20 @@ dotenv.config();
 const app = express();
 
 // CORS configuration
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://panther-dust.onrender.com",
+];
+
+// Configuração de CORS
 const corsOptions = {
-  origin: ["https://panther-dust.onrender.com", "http://localhost:5173"],
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Não autorizado pela política CORS"), false);
+    }
+  },
   methods: ["GET", "POST", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
 };
