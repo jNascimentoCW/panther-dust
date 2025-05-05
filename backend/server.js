@@ -8,14 +8,15 @@ dotenv.config();
 
 const app = express();
 
-// Middleware
 app.use(
   cors({
-    origin: "https://panther-dust.onrender.com",
-    methods: ["GET", "POST", "OPTIONS"],
+    origin: ["http://localhost:5173", "https://panther-dust.onrender.com"],
+    methods: ["POST"],
     allowedHeaders: ["Content-Type"],
   })
 );
+
+app.use(express.json());
 
 // Initialize OpenAI
 const openai = new OpenAI({
