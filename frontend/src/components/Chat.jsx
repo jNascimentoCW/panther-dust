@@ -28,13 +28,16 @@ const Chat = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch("http://localhost:3000/api/chat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ message: userMessage }),
-      });
+      const response = await fetch(
+        "https://panther-dust.onrender.com/api/chat",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ message: userMessage }),
+        }
+      );
 
       const data = await response.json();
       setMessages((prev) => [...prev, { text: data.message, isAi: true }]);
