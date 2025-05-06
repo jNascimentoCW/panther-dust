@@ -59,6 +59,7 @@ const app = express();
 // CORS configuration
 const allowedOrigins = ["https://panther-dust.onrender.com"];
 
+// Configuração de CORS
 const corsOptions = {
   origin: function (origin, callback) {
     if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
@@ -93,22 +94,37 @@ app.post("/api/chat", async (req, res) => {
     const completion = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [
-        { role: "system", content: greetingPrompt },
-        { role: "system", content: apologyPrompt },
-        { role: "system", content: csPrompt },
-        { role: "system", content: teamRedirectPrompt },
-        { role: "user", content: message },
+        {
+          role: "system",
+          content: greetingPrompt,
+        },
+        {
+          role: "system",
+          content: apologyPrompt,
+        },
+        {
+          role: "system",
+          content: csPrompt,
+        },
+        {
+          role: "system",
+          content: teamRedirectPrompt,
+        },
+        {
+          role: "user",
+          content: message,
+        },
       ],
       temperature: 0.7,
       max_tokens: 500,
     });
 
     const aiResponse = completion.choices[0].message.content;
-    return res.json({ message: aiResponse });
+    res.json({ message: aiResponse });
   } catch (error) {
-    console.error("Erro no backend:", error);
-    return res.status(500).json({
-      error: "Erro ao processar sua solicitação",
+    console.error("Error:", error);
+    res.status(500).json({
+      error: "An error occurred while processing your request",
       details: error.message,
     });
   }
@@ -123,7 +139,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
