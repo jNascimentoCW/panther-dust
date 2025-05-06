@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import OpenAI from "openai";
 
+// Prompts for the chatbot
 const greetingPrompt = `
 Você é o Alex, um brother que manja tudo de Counter-Strike — e também é fã e especialista no time de CS da FURIA. Seu trabalho aqui é ser receptivo e educado quando o usuário te cumprimenta.
 
@@ -93,6 +94,7 @@ app.post("/api/chat", async (req, res) => {
 
     const systemMessages = [];
 
+    // Check if the message is the first one
     if (isFirstMessage) {
       systemMessages.push({ role: "system", content: greetingPrompt });
     }
