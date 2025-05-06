@@ -85,31 +85,28 @@ const openai = new OpenAI({
 // Chat endpoint
 app.post("/api/chat", async (req, res) => {
   try {
-    const { message } = req.body;
+    const { message, isFirstMessage } = req.body;
 
     if (!message) {
       return res.status(400).json({ error: "Message is required" });
     }
 
+    const systemMessages = [];
+
+    if (isFirstMessage) {
+      systemMessages.push({ role: "system", content: greetingPrompt });
+    }
+
+    systemMessages.push(
+      { role: "system", content: apologyPrompt },
+      { role: "system", content: csPrompt },
+      { role: "system", content: teamRedirectPrompt }
+    );
+
     const completion = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [
-        {
-          role: "system",
-          content: greetingPrompt,
-        },
-        {
-          role: "system",
-          content: apologyPrompt,
-        },
-        {
-          role: "system",
-          content: csPrompt,
-        },
-        {
-          role: "system",
-          content: teamRedirectPrompt,
-        },
+        ...systemMessages,
         {
           role: "user",
           content: message,
