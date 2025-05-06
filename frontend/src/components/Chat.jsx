@@ -29,7 +29,7 @@ const Chat = () => {
 
     try {
       const response = await fetch(
-        "https://panther-dust.onrender.com/api/chat",
+        "https://meu-backend.onrender.com/api/chat",
         {
           method: "POST",
           headers: {
