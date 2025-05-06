@@ -29,7 +29,7 @@ const Chat = () => {
 
     try {
       const response = await fetch(
-        "https://meu-backend.onrender.com/api/chat",
+        "https://panther-dust.onrender.com/api/chat",
         {
           method: "POST",
           headers: {
@@ -39,10 +39,14 @@ const Chat = () => {
         }
       );
 
+      if (!response.ok) {
+        throw new Error("Erro na resposta do servidor");
+      }
+
       const data = await response.json();
       setMessages((prev) => [...prev, { text: data.message, isAi: true }]);
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Erro:", error);
       setMessages((prev) => [
         ...prev,
         {
@@ -56,7 +60,7 @@ const Chat = () => {
   };
 
   return (
-    <div className=" flex flex-col h-screen bg-stone-900">
+    <div className="flex flex-col h-screen bg-stone-900">
       <div className="w-full border-b border-gray-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
           <h1 className="text-xl text-center md:text-3xl font-bold text-gray-200 flex items-center gap-2 relative">
@@ -102,7 +106,7 @@ const Chat = () => {
       </div>
 
       <div className="flex-none p-6 bg-stone-900 border-t border-gray-200 shadow-lg">
-        <form onSubmit={handleSubmit} className="max-w-7xl  mx-auto w-full">
+        <form onSubmit={handleSubmit} className="max-w-7xl mx-auto w-full">
           <div className="flex flex-col space-y-3">
             <div className="relative flex items-center">
               <input
@@ -122,7 +126,6 @@ const Chat = () => {
                 <i>
                   <img className="p-2" src="/gun.png" alt="" />{" "}
                 </i>
-                {/* <PaperAirplaneIcon className="h-6 w-6 rotate-90" /> */}
               </button>
             </div>
             <p className="text-xs text-gray-500 text-center">
